@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) in pages" :key="index">
         <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
@@ -16,70 +16,20 @@
 <script>
 export default {
   name: "HomeIcons",
+  props:{
+    list: Array
+  },
   data() {
     return {
-      iconList: [
-        {
-          id: "001",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          textContent: "景点门票"
-        },
-        {
-          id: "002",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png",
-          textContent: "故宫"
-        },
-        {
-          id: "003",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png",
-          textContent: "北京必游"
-        },
-        {
-          id: "004",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/fa/2548667cb6e902.png",
-          textContent: "动植物园"
-        },
-        {
-          id: "005",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/67/9a1678221b8e0e02.png",
-          textContent: "一日游"
-        },
-        {
-          id: "006",
-          imgSrc:
-            "http://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/338c5b924c5809e8c7b14f60a953c3e2.png",
-          textContent: "古北水镇"
-        },
-        {
-          id: "007",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          textContent: "欢乐谷万圣节"
-        },
-        {
-          id: "008",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          textContent: "赏红叶"
-        },
-        {
-          id: "009",
-          imgSrc:
-            "http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-          textContent: "我是第九个图标"
-        }
-      ]
+      swiperOption: {
+        autoplay: false
+      }
     };
   },
   computed: {
     pages() {
       const pages = [];
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
