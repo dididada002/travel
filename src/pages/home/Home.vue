@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     getHomeInfo () {
-      axios.get('http://localhost:8998/api/firstpage/msg')
+      axios.get('http://localhost:8888/api/firstpage/msg')
       .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
